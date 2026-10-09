@@ -1,5 +1,9 @@
 # Ktor Server Demo
 
+[English](./README_en.md) / 简体中文
+
+---
+
 Ktor 3.x 后端项目，采用纯正、原生的 Ktor 方式（Idiomatic Ktor）完全重构实现，与 `Springboot4-Vue3` 项目功能与数据结构对齐，支持 Vue 3 前端无缝对接。
 
 ---

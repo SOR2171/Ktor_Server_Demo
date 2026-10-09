@@ -3,7 +3,7 @@ ktor:
     port: 8080
   application:
     modules:
-      - io.github.sor2171.ApplicationKt.module
+      - io.github.sor2171.backend.ApplicationKt.module
 
 datasource:
   url: "jdbc:mysql://localhost:3306/kotlin_springboot?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
