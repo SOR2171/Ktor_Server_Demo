@@ -1,3 +1,5 @@
+@file:Suppress("VulnerableLibrariesLocal")
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.serialization)
@@ -34,12 +36,12 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
 
-    // Security & JWT (对应 Spring Boot Security & java-jwt)
+    // Security & JWT (Spring Boot Security & java-jwt)
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("at.favre.lib:bcrypt:0.10.2")
 
     // Database: MySQL / MariaDB & Exposed ORM & HikariCP
-    implementation("com.mysql:mysql-connector-j:9.2.0")
+    implementation("com.mysql:mysql-connector-j:26.7.0")
     implementation("org.mariadb.jdbc:mariadb-java-client:3.5.9")
     implementation("com.zaxxer:HikariCP:5.1.0")
     implementation("org.jetbrains.exposed:exposed-core:0.55.0")
@@ -47,8 +49,8 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:0.55.0")
     implementation("org.jetbrains.exposed:exposed-kotlin-datetime:0.55.0")
 
-    // Mail (对应 Spring Boot Starter Mail)
-    implementation("org.eclipse.angus:jakarta.mail:2.0.3")
+    // Mail (Spring Boot Starter Mail)
+    implementation("org.eclipse.angus:jakarta.mail:2.0.4")
 
     // Redis
     implementation("io.lettuce:lettuce-core:6.3.2.RELEASE")

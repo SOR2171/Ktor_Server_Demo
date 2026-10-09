@@ -1,0 +1,42 @@
+ktor:
+  deployment:
+    port: 8080
+  application:
+    modules:
+      - io.github.sor2171.ApplicationKt.module
+
+datasource:
+  url: "jdbc:mysql://localhost:3306/kotlin_springboot?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+  username: "backend"
+  password: "123456"
+  driver: "com.mysql.cj.jdbc.Driver"
+  max-pool-size: 10
+
+redis:
+  url: "redis://localhost:6379"
+
+rabbitmq:
+  host: "localhost"
+  port: 5672
+  virtual-host: "/"
+  username: "admin"
+  password: "123456"
+  queue: "mail"
+
+mail:
+  host: "smtp.xxx.com"
+  port: 465
+  username: "11111@xxx.com"
+  password: "**********"
+
+jwt:
+  key: "11111111111111111111111"
+  expire-hours: 168
+
+flow-limit:
+  count: 1000
+  limit-time: 3
+  ban-time: 60
+
+ws:
+  token-expire-time: 300
