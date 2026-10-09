@@ -53,12 +53,12 @@ fun Application.module() {
 
     // 4. Initialize JWT
     val jwtKey = environment.config.tryGetString("jwt.key")
-        ?: "2837452984690238475628394756203847562038475"
+        ?: "11111111111111111111111"
     val jwtExpireHours = environment.config.tryGetString("jwt.expire-hours")?.toIntOrNull() ?: 168
     val jwtUtils = JwtUtils(jwtKey, jwtExpireHours, redisService)
 
     // 5. Initialize Mail
-    val mailHost = environment.config.tryGetString("mail.host") ?: "smtp.qq.com"
+    val mailHost = environment.config.tryGetString("mail.host") ?: "smtp.xxx.com"
     val mailPort = environment.config.tryGetString("mail.port")?.toIntOrNull() ?: 465
     val mailUser = environment.config.tryGetString("mail.username") ?: ""
     val mailPass = environment.config.tryGetString("mail.password") ?: ""

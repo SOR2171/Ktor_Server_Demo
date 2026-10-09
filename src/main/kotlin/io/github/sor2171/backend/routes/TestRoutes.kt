@@ -8,7 +8,7 @@ import io.ktor.server.routing.*
 fun Route.testRoutes(wsTokenService: WsTokenService) {
     route("/api/test") {
         get("/hello") {
-            call.respondText("Hello Kotlin WebFlux!")
+            call.respondText("Hello Kotlin Ktor!")
         }
 
         get("/wstoken") {
