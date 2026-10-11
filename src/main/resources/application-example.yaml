@@ -6,8 +6,8 @@ ktor:
       - io.github.sor2171.backend.ApplicationKt.module
 
 datasource:
-  url: "jdbc:mysql://localhost:3306/kotlin_springboot?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
-  username: "backend"
+  url: "jdbc:mysql://localhost:3306/ktor_rpc?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+  username: "root"
   password: "123456"
   driver: "com.mysql.cj.jdbc.Driver"
   max-pool-size: 10

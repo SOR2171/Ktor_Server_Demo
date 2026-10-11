@@ -6,6 +6,7 @@ import io.github.sor2171.backend.plugins.configureSecurity
 import io.github.sor2171.backend.plugins.configureSerialization
 import io.github.sor2171.backend.plugins.configureStatusPages
 import io.github.sor2171.backend.plugins.configureWebsockets
+import io.github.sor2171.backend.plugins.configureRpc
 import io.github.sor2171.backend.service.AuthorizationService
 import io.github.sor2171.backend.service.MailService
 import io.github.sor2171.backend.service.RabbitService
@@ -16,6 +17,7 @@ import io.github.sor2171.backend.database.DatabaseFactory
 import io.github.sor2171.backend.routes.authRoutes
 import io.github.sor2171.backend.routes.testRoutes
 import io.github.sor2171.backend.routes.wsRoutes
+import io.github.sor2171.backend.routes.rpcRoutes
 import io.github.sor2171.security.JwtUtils
 import io.ktor.server.application.*
 import io.ktor.server.config.*
@@ -117,6 +119,7 @@ fun Application.module() {
     configureSecurity(jwtUtils)
     configureStatusPages()
     configureWebsockets()
+    configureRpc()
 
     // 9. Configure FlowLimit Plugin
     val flowCount = environment.config.tryGetString("flow-limit.count")?.toIntOrNull() ?: 1000
@@ -135,5 +138,6 @@ fun Application.module() {
         authRoutes(authorizationService)
         testRoutes(wsTokenService)
         wsRoutes(wsTokenService)
+        rpcRoutes(authorizationService, wsTokenService)
     }
 }

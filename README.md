@@ -23,6 +23,7 @@ Ktor 3.x 后端项目，采用纯正、原生的 Ktor 方式（Idiomatic Ktor）
   - Auth0 Java-JWT (`4.4.0`) + Ktor Auth JWT (`ktor-server-auth-jwt`)
   - BCrypt 密码加密 (`at.favre.lib:bcrypt:0.10.2`，与 Spring Security BCrypt 100% 兼容)
 - **序列化与时间**：`kotlinx-serialization-json` + `kotlinx-datetime`
+- **RPC 框架**：JetBrains `kotlinx-rpc` (`0.10.4`，基于 WebSocket 的 kRPC 协议与 Flow 双向流通信)
 - **实时通信**：Ktor WebSockets (`ktor-server-websockets`)
 - **跨域与异常拦截**：Ktor CORS (`ktor-server-cors`) + StatusPages (`ktor-server-status-pages`)
 
@@ -44,7 +45,7 @@ Ktor 3.x 后端项目，采用纯正、原生的 Ktor 方式（Idiomatic Ktor）
 导入项目自带的 SQL 架构与初始数据：
 
 ```bash
-mysql -u backend -p kotlin_springboot < src/main/resources/springboot_vue3.sql
+mysql -u backend -p kotlin_springboot < src/main/resources/ktor_rpc.sql
 ```
 
 > **默认测试账户**：
@@ -95,3 +96,7 @@ INFO Application - Responding at http://0.0.0.0:8080
 | `GET`  | `/api/test/wstoken`                             | 公开           | 签发 WebSocket 一次性握手 Token              |
 | `WS`   | `/ws/test`                                      | 公开           | 测试 WebSocket 管道                          |
 | `WS`   | `/ws/v1/example`                                | `?token=...`   | 校验一次性 Token 后建立连接                  |
+| `RPC`  | `/rpc`                                          | 契约代理       | kotlinx-rpc 远程过程调用端点 (kRPC)          |
+
+> 详细的接口定义、字段校验规则、RPC 客户端接入代码请查阅 [API 接口文档 (api.md)](./api.md)。
+

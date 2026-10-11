@@ -44,7 +44,7 @@ A Ktor 3.x backend project rewritten in an idiomatic Ktor manner, fully aligned 
 Import the included database schema and sample data:
 
 ```bash
-mysql -u backend -p kotlin_springboot < src/main/resources/springboot_vue3.sql
+mysql -u backend -p kotlin_springboot < src/main/resources/ktor_rpc.sql
 ```
 
 > **Default Test Account**:

@@ -12,10 +12,10 @@ object DatabaseFactory : AutoCloseable {
 
     fun init(config: ApplicationConfig) {
         val url = config.tryGetString("datasource.url")
-            ?: "jdbc:mysql://localhost:3306/kotlin_springboot?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+            ?: "jdbc:mysql://localhost:3306/ktor_rpc?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
         val driver = config.tryGetString("datasource.driver")
             ?: "com.mysql.cj.jdbc.Driver"
-        val username = config.tryGetString("datasource.username") ?: "backend"
+        val username = config.tryGetString("datasource.username") ?: "root"
         val password = config.tryGetString("datasource.password") ?: "123456"
         val maxPoolSize = config.tryGetString("datasource.max-pool-size")?.toIntOrNull() ?: 10
 
