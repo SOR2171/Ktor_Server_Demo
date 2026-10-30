@@ -10,7 +10,7 @@ fun Route.wsRoutes(wsTokenService: WsTokenService) {
         for (frame in incoming) {
             if (frame is Frame.Text) {
                 val text = frame.readText()
-                send(Frame.Text("Kotlin springboot4 received: $text"))
+                send(Frame.Text("Kotlin Ktor received: $text"))
             }
         }
     }
@@ -26,7 +26,7 @@ fun Route.wsRoutes(wsTokenService: WsTokenService) {
         for (frame in incoming) {
             if (frame is Frame.Text) {
                 val text = frame.readText()
-                send(Frame.Text("Kotlin springboot4 received: $text"))
+                send(Frame.Text("Kotlin Ktor received: $text"))
             }
         }
     }

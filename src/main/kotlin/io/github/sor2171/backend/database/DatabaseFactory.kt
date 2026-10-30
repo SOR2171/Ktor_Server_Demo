@@ -2,10 +2,12 @@ package io.github.sor2171.backend.database
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import io.ktor.server.config.*
+import io.ktor.server.config.ApplicationConfig
+import io.ktor.server.config.tryGetString
 import kotlinx.coroutines.Dispatchers
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
+import kotlinx.coroutines.withContext
+import org.jetbrains.exposed.v1.jdbc.Database
+import org.jetbrains.exposed.v1.jdbc.transactions.suspendTransaction
 
 object DatabaseFactory : AutoCloseable {
     private var dataSource: HikariDataSource? = null
@@ -40,5 +42,7 @@ object DatabaseFactory : AutoCloseable {
     }
 
     suspend fun <T> dbQuery(block: suspend () -> T): T =
-        newSuspendedTransaction(Dispatchers.IO) { block() }
+        withContext(Dispatchers.IO) {
+            suspendTransaction { block() }
+        }
 }

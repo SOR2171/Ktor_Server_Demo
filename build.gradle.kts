@@ -1,14 +1,20 @@
 @file:Suppress("VulnerableLibrariesLocal")
 
 plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.kotlinx.rpc)
-    alias(ktorLibs.plugins.ktor)
+    alias(libs.plugins.kotlinJvm)
+    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.kotlinxRpc)
+    alias(libs.plugins.kotlinNoArg)
+    alias(libs.plugins.ktor)
+}
+
+noArg {
+    annotation("io.github.sor2171.backend.annotation.NoArg")
+    invokeInitializers = true
 }
 
 group = "io.github.sor2171"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0"
 
 application {
     mainClass = "io.ktor.server.cio.EngineMain"
@@ -17,56 +23,57 @@ application {
 kotlin {
     jvmToolchain(21)
 }
+
 dependencies {
     // Ktor Core & Features
-    implementation(ktorLibs.server.cio)
-    implementation(ktorLibs.server.config.yaml)
-    implementation(ktorLibs.server.core)
-    implementation(ktorLibs.server.websockets)
-    implementation("io.ktor:ktor-server-content-negotiation:3.6.0")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:3.6.0")
-    implementation("io.ktor:ktor-server-cors:3.6.0")
-    implementation("io.ktor:ktor-server-auth:3.6.0")
-    implementation("io.ktor:ktor-server-auth-jwt:3.6.0")
-    implementation("io.ktor:ktor-server-status-pages:3.6.0")
-    implementation("io.ktor:ktor-server-request-validation:3.6.0")
+    implementation(libs.ktor.server.cio)
+    implementation(libs.ktor.config.yaml)
+    implementation(libs.ktor.serverCore)
+    implementation(libs.ktor.websockets)
+    implementation(libs.ktor.server.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.server.cors)
+    implementation(libs.ktor.server.auth)
+    implementation(libs.ktor.server.auth.jwt)
+    implementation(libs.ktor.server.status.pages)
+    implementation(libs.ktor.server.request.validation)
 
     // Serialization & Datetime & Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlin.reflect)
+    implementation(libs.kotlinx.coroutines.core)
 
-    // Security & JWT (Spring Boot Security & java-jwt)
-    implementation("com.auth0:java-jwt:4.4.0")
-    implementation("at.favre.lib:bcrypt:0.10.2")
+    // Security & JWT
+    implementation(libs.java.jwt)
+    implementation(libs.bcrypt)
 
     // Database: MySQL / MariaDB & Exposed ORM & HikariCP
-    implementation("com.mysql:mysql-connector-j:26.7.0")
-    implementation("org.mariadb.jdbc:mariadb-java-client:3.5.9")
-    implementation("com.zaxxer:HikariCP:5.1.0")
-    implementation("org.jetbrains.exposed:exposed-core:0.55.0")
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.55.0")
-    implementation("org.jetbrains.exposed:exposed-dao:0.55.0")
-    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:0.55.0")
+    implementation(libs.mysql.connector.j)
+    implementation(libs.mariadb.java.client)
+    implementation(libs.hikaricp)
+    implementation(libs.exposed.core)
+    implementation(libs.jetbrains.exposed.jdbc)
+    implementation(libs.jetbrains.exposed.dao)
+    implementation(libs.jetbrains.exposed.kotlin.datetime)
 
-    // Mail (Spring Boot Starter Mail)
-    implementation("org.eclipse.angus:jakarta.mail:2.0.4")
+    // Mail
+    implementation(libs.jakarta.mail)
 
     // Redis
-    implementation("io.lettuce:lettuce-core:6.3.2.RELEASE")
+    implementation(libs.lettuce.core)
 
     // RabbitMQ
-    implementation("com.rabbitmq:amqp-client:5.34.0")
+    implementation(libs.amqp.client)
 
     // Logging
-    implementation(libs.logback.classic)
+    implementation(libs.logback)
 
     // kotlinx-rpc
-    implementation("org.jetbrains.kotlinx:kotlinx-rpc-krpc-ktor-server:0.10.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-rpc-krpc-serialization-json:0.10.4")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-rpc-krpc-ktor-client:0.10.4")
+    implementation(libs.kotlinx.rpc.krpc.ktor.server)
+    implementation(libs.kotlinx.rpc.krpc.serialization.json)
+    testImplementation(libs.kotlinx.rpc.krpc.ktor.client)
 
-    testImplementation(kotlin("test"))
-    testImplementation(ktorLibs.server.testHost)
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.ktor.serverTestHost)
 }

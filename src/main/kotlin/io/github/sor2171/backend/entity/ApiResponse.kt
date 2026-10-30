@@ -1,8 +1,9 @@
 package io.github.sor2171.backend.entity
 
+import io.github.sor2171.backend.annotation.NoArg
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 
+@NoArg
 @Serializable
 data class ApiResponse<T>(
     val code: Int,
@@ -34,8 +35,4 @@ data class ApiResponse<T>(
             return failure(400, null, "Logout Failed$formatMessage")
         }
     }
-}
-
-inline fun <reified T> ApiResponse<T>.toJsonString(): String {
-    return Json.encodeToString(this)
 }

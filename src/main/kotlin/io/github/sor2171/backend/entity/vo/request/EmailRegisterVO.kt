@@ -1,13 +1,15 @@
 package io.github.sor2171.backend.entity.vo.request
 
+import io.github.sor2171.backend.annotation.NoArg
 import kotlinx.serialization.Serializable
 
+@NoArg
 @Serializable
 data class EmailRegisterVO(
-    val email: String = "",
+    val email: String,
     val code: String? = null,
-    val username: String = "",
-    val password: String = "",
+    val username: String,
+    val password: String,
 ) {
     fun validate(): String? {
         if (!email.matches(Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"))) {
